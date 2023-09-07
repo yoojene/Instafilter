@@ -18,12 +18,19 @@ struct ContentView: View {
             image?
                 .resizable()
                 .scaledToFit()
-        }
-        
-        Button("Select image") {
-            showingPicker = true
             
-        }.sheet(isPresented: $showingPicker) {
+            Button("Select image") {
+                showingPicker = true
+                
+            }
+            
+            Button("Save Image") {
+                guard let inputImage = inputImage else { return }
+                let imageSaver = ImageSaver()
+                imageSaver.writeToPhotoAlbum(image: inputImage)
+            }
+        }
+        .sheet(isPresented: $showingPicker) {
             ImagePicker(image: $inputImage)
         }
         .onChange(of: inputImage) { _ in loadImage()}
@@ -33,15 +40,6 @@ struct ContentView: View {
         guard let inputImage = inputImage else { return }
         image = Image(uiImage: inputImage)
         
-
-        // V old UIKit code
-        // - 1 the image to save
-        // - 2 the object (class) inherited from NSObject that will handle the method
-        // - 3 the method to be called on the class in 2.  Method name string not the method itself.
-        // SwiftUI needs this to have a #selector and @objc attribute
-        // #selector literally scans the class for the method name to look it up
-        // - 4 (not used here) - context.  Some data is returned when 3 is called.
-        UIImageWriteToSavedPhotosAlbum(inputImage, nil, nil, nil)
     }
 }
 
