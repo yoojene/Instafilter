@@ -128,8 +128,11 @@ struct ContentView: View {
                 Button("Bokeh") {
                     selectedFilterName = "Bokeh"
                     setFilter(CIFilter.bokehBlur())
-                    
+
                 }
+  
+                // 10 view limit !!
+                
                 Button("Cancel", role: .cancel) { }
             }
         }
@@ -162,7 +165,9 @@ struct ContentView: View {
     
     func applyProcessing() {
         let inputKeys = currentFilter.inputKeys
-                
+        
+        print(inputKeys)
+        
         if inputKeys.contains(kCIInputIntensityKey) {
             currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey)
         }
@@ -172,6 +177,7 @@ struct ContentView: View {
         if inputKeys.contains(kCIInputScaleKey) {
             currentFilter.setValue(filterScale * 100, forKey: kCIInputScaleKey)
         }
+        
         
         guard let outputImage = currentFilter.outputImage else { return }
         
