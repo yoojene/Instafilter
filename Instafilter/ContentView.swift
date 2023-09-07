@@ -59,6 +59,7 @@ struct ContentView: View {
                     Spacer()
                     
                     Button("Save", action: save)
+                        .disabled(image == nil)
                 }
                 
             }
