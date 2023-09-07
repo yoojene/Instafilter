@@ -37,7 +37,6 @@
 		44081A892AA8D12F007B02E1 = {
 			isa = PBXGroup;
 			children = (
-				44D3CDD42AA8E4D9009D3D85 /* ImagePicker.swift */,
 				44081A942AA8D12F007B02E1 /* Instafilter */,
 				44081A932AA8D12F007B02E1 /* Products */,
 			);
@@ -54,6 +53,7 @@
 		44081A942AA8D12F007B02E1 /* Instafilter */ = {
 			isa = PBXGroup;
 			children = (
+				44D3CDD42AA8E4D9009D3D85 /* ImagePicker.swift */,
 				44081A952AA8D12F007B02E1 /* InstafilterApp.swift */,
 				44081A972AA8D12F007B02E1 /* ContentView.swift */,
 				44081A992AA8D130007B02E1 /* Assets.xcassets */,
